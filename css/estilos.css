@@ -14,7 +14,7 @@ body {
   }
 
   /* se a tela tiver pelo menos 400px vai carregar estes estilos */
-  @media (min-width: 400px) {
+  @media (min-width: 400px){
     body {
       font-size: 14px;
     }
@@ -46,6 +46,7 @@ body {
     position: fixed;
     width: 100vw;
     top: 0;
+    z-index: 1;
   }
   
   .menu ul {
@@ -55,22 +56,45 @@ body {
   
   .menu li {
     list-style: none;
-    background-color: aliceblue;
+    background-color: #595656;
   }
   
   .menu a {
-    color: rgb(255, 255, 255);
     display: block;
     padding: 10px 20px;
+    transition: background-color 1s, color 1s;
+  }
+
+  .menu a:hover {
+    background-color: rgb(255, 255, 255);
+    color: #595656;
   }
 
   a {
-    color: teal;
+    color: white;
     text-decoration: none;
   }
   
   a:hover {
     text-decoration: underline;
+  }
+
+  .titulo {
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0;
+
+    animation: 1s linear 2s animacaoTitulo forwards;
+  }
+
+  @keyframes animacaoTitulo {
+    from {
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0;
+    }
+    to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    }
   }
   
   .site-subtitle,
@@ -88,12 +112,12 @@ body {
     font-family: 'Lato', sans-serif;
     line-height: 1.8em;
   }
-
+.contato,
   .portfolio {
     padding: 2em;
-    height: 100vh;
+    min-height: 100vh;
   }
-
+.contato h2,
   .portfolio h2 {
     font-family: 'Open Sans', sans-serif;
     color: teal;
@@ -131,4 +155,24 @@ body {
   object-fit: cover;
   object-position: left bottom;
   border-radius: 10%;
+  transition: transform 500ms;
+  }
+
+  .img-portfolio:hover {
+  transform: scale(1.2)
+  }
+
+  .contato .icons {
+    text-align: center;
+  }
+
+  .contato a {
+    color: gray;
+    font-size: 2em;
+    transition: text-shadow 1s;
+  }
+
+  .contato a:hover {
+    text-decoration: none;
+    text-shadow: 2px 2px 2px rgb(102, 102, 102);
   }
