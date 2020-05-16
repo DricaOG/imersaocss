@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(file:///C:/Users/drica/Desktop/imersaocss/img/fundo.jpg);
+    background-image: url("../img/fundo.jpg");
     background-size: auto 100vh;
     font-family: 'Lato', sans-serif;
     height: 100vh;
