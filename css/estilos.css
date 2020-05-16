@@ -14,7 +14,7 @@ body {
   }
 
   /* se a tela tiver pelo menos 400px vai carregar estes estilos */
-  @media (min-width: 400px){
+  @media (min-width: 400px) {
     body {
       font-size: 14px;
     }
@@ -23,13 +23,16 @@ body {
   /* breakpoint */
   @media (min-width: 600px) {
     body {
-      font-size: 18px;
+    background-attachment: fixed;
+    background-size: cover;
+    font-size: 18px;
     }
   }
 
    /* breakpoint */
    @media (min-width: 1200px) {
     body {
+
       font-size: 20px;
     }
   }
@@ -62,9 +65,10 @@ body {
   .menu a {
     display: block;
     padding: 10px 20px;
-    transition: background-color 1s, color 1s;
+    transition: background-color 0.3s, color 1s;
   }
 
+  .menu a:active,
   .menu a:hover {
     background-color: rgb(255, 255, 255);
     color: #595656;
@@ -79,12 +83,12 @@ body {
     text-decoration: underline;
   }
 
+  /* Animacao do titulo
   .titulo {
     transform: scale(0.2) translateY(50vh);
     opacity: 0;
-
-    animation: 1s linear 2s animacaoTitulo forwards;
-  }
+    animation: 1s ease 500ms animacaoTitulo forwards;
+  }*/
 
   @keyframes animacaoTitulo {
     from {
@@ -112,32 +116,73 @@ body {
     font-family: 'Lato', sans-serif;
     line-height: 1.8em;
   }
+
+.sobre,
 .contato,
-  .portfolio {
+.projetos {
     padding: 2em;
     min-height: 100vh;
   }
+
+@media (min-width: 1200px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+  }
+}
+
+.sobre h2,
 .contato h2,
-  .portfolio h2 {
+.projetos h2 {
     font-family: 'Open Sans', sans-serif;
     color: teal;
     margin-bottom: 1.5em;
     font-size: 2.5em;
   }
 
-  .portfolio .grid {
+.sobre p {
+    color: #595656;
+    margin-bottom: 2em;
+    text-indent: 2em;
+    text-align: justify;
+  }
+
+  .sobre a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  .sobre a:hover {
+    background-color: white;
+    text-decoration: none;
+    color: magenta;
+  }
+
+  .sobre .avatar {
+    margin-left: 2em;
+  }
+
+  @media (min-width: 600px) {
+    .sobre .avatar {
+      clip-path: circle(50% at 50% 50%);
+      float: right;
+    }
+  }
+
+  .projetos .grid {
     display: grid;
     gap: 2em;
   }
 
 @media (min-width: 560px) {
-  .portfolio .grid {
+  .projetos .grid {
     grid-template-columns: 240px 240px;
   }
 }
 
 @media (min-width: 880px) {
-  .portfolio .grid {
+  .projetos .grid {
     grid-template-columns: repeat(3, 260px);
     align-content: center;
     justify-content: center;
@@ -145,22 +190,53 @@ body {
   }
 }
 
-.portfolio figure {
+.flip-card {
+  height: 180px;
+  perspective: 1000px;
+}
+
+.flip-card:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 3s;
+}
+
+.card-front, 
+.card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-back {
+  background-color: white;
+  height: 180px;
+  width: 100%;
+  transform: rotateY(180deg);
+}
+
+.projetos figure {
   text-align: center;
 }
 
-.img-portfolio {
+.img-projetos {
   height: 180px;
-  width: 240px;
+  width: 100%;
   object-fit: cover;
   object-position: left bottom;
   border-radius: 10%;
   transition: transform 500ms;
   }
 
-  .img-portfolio:hover {
-  transform: scale(1.2)
-  }
+/*
+  .img-projetos:hover {
+    transform: scale(1.2);
+  }*/
 
   .contato .icons {
     text-align: center;
@@ -172,6 +248,7 @@ body {
     transition: text-shadow 1s;
   }
 
+  .contato a:active,
   .contato a:hover {
     text-decoration: none;
     text-shadow: 2px 2px 2px rgb(102, 102, 102);
